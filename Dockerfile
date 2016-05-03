@@ -1,13 +1,17 @@
-# 使用官方 nginx 镜像
-FROM nginx
+# Using a compact OS
+FROM alpine:latest
 
-# /var/www/html/ 为 Apache 目录
-COPY ./code/ /var/www/html/
+MAINTAINER Imhuso <imhuso@126.com>
 
-# 开启80端口
+# Install Nginx
+RUN apk --update add nginx
+
+# Add 2048 stuff into Nginx server
+COPY ./code/ /usr/share/nginx/html
+
 EXPOSE 80
+RUN ln -sf /dev/stdout /var/log/nginx/access.log \
+	&& ln -sf /dev/stderr /var/log/nginx/error.log
 
-# The CMD instruction provides default execution command for an container
-# 开启并且后台运行nginx
+# Start Nginx and keep it from running background
 CMD ["nginx", "-g", "daemon off;"]
-
