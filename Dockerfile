@@ -1,14 +1,13 @@
-# The FROM instruction sets the Base Image for subsequent instructions.
-# Using Nginx as Base Image
+# 使用官方 nginx 镜像
 FROM nginx
 
-# The RUN instruction will execute any commands
-# Adding HelloWorld page into Nginx server
-RUN cp "/index.html" > /usr/share/nginx/html/
+# /var/www/html/ 为 Apache 目录
+COPY ./code/ /var/www/html/
 
-# The EXPOSE instruction informs Docker that the container listens on the specified network ports at runtime
+# 开启80端口
 EXPOSE 80
 
 # The CMD instruction provides default execution command for an container
-# Start Nginx and keep it from running background
+# 开启并且后台运行nginx
 CMD ["nginx", "-g", "daemon off;"]
+
