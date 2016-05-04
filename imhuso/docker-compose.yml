@@ -5,7 +5,7 @@ nginx:
   links:
     - "php"
   volumes:
-    - ~/huso:/dvwa
+    - ~/huso:/huso
 
 php:
   build: ./php
@@ -16,7 +16,7 @@ php:
     - "mysql"
     - "redis"
   volumes:
-    - ~/huso:/dvwa
+    - ~/huso:/huso
 
 mysql:
   build: ./mysql
@@ -25,7 +25,7 @@ mysql:
   volumes:
     - ~/huso/data/mysql:/var/lib/mysql
   environment:
-    MYSQL_ROOT_PASSWORD: 123456
+    MYSQL_ROOT_PASSWORD: imhuso5633228
 
 redis:
   build: ./redis
