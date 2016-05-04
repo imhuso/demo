@@ -20,7 +20,7 @@ build-nginx:
 	docker build -t huso/nginx ./nginx
 
 run-nginx:
-	docker run -i -d -p 80:80 -v ~/huso:/huso -t dvwa/nginx
+	docker run -i -d -p 80:80 -v ~/huso:/huso -t huso/nginx
 
 in-nginx:
 	docker run -i -p 80:80 -v ~/huso:/huso -t huso/nginx /bin/bash
