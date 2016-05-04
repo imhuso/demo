@@ -2,7 +2,5 @@ nginx:
   build: ./nginx
   ports:
     - "80:80"
-  links:
-    - "php"
   volumes:
     - /imhuso/__data__/webservice/php/imhuso:/imhuso
