@@ -5,29 +5,4 @@ nginx:
   links:
     - "php"
   volumes:
-    - ~/huso:/huso
-
-php:
-  build: ./php
-  ports:
-    - "8000:8000"
-    - "9000:9000"
-  links:
-    - "mysql"
-    - "redis"
-  volumes:
-    - ~/huso:/huso
-
-mysql:
-  build: ./mysql
-  ports:
-    - "3306:3306"
-  volumes:
-    - ~/huso/data/mysql:/var/lib/mysql
-  environment:
-    MYSQL_ROOT_PASSWORD: imhuso5633228
-
-redis:
-  build: ./redis
-  ports:
-    - "6379:6379"
+    - /imhuso/__data__/webservice/php/imhuso:/imhuso
